@@ -1,5 +1,6 @@
 package com.oasisgames.vertex;
 
+import com.oasisgames.vertex.http.simple.HttpServer;
 import io.vertx.core.Vertx;
 import io.vertx.junit5.VertxExtension;
 import io.vertx.junit5.VertxTestContext;
@@ -8,11 +9,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 @ExtendWith(VertxExtension.class)
-public class TestMainVerticle {
+public class TestHttpServer {
 
   @BeforeEach
   void deploy_verticle(Vertx vertx, VertxTestContext testContext) {
-    vertx.deployVerticle(new MainVerticle(), testContext.succeeding(id -> testContext.completeNow()));
+    vertx.deployVerticle(new HttpServer(), testContext.succeeding(id -> testContext.completeNow()));
   }
 
   @Test
